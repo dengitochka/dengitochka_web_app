@@ -5,6 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: sans-serif;
+  background: var(--tg-theme-bg-color);
+  color: var(--tg-theme-text-color);
 }
 
 code {

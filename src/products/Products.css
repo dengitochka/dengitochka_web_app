@@ -1,0 +1,28 @@
+.list-products {
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    float: left;
+    padding: 3% 5% 3% 0;
+}
+
+.list-products p:last-child {
+    margin-left: 0px;
+}
+
+.product {
+    width: 40%;
+    margin-left: 10%;
+}
+
+.product-img {
+    width: 65%;
+    display: block;
+    margin: auto;
+}
+
+.product-title-price {
+    display: flex;
+    text-align: center;
+    font-size: smaller;
+}

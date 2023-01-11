@@ -1,0 +1,60 @@
+.get-order-button {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 12%;
+
+    border: none;
+    background-color: #11c611;
+    color: white;
+    font-weight: bold;
+}
+
+.get-order-button:active {
+    background-color: #2fdd2f;
+}
+
+.header-order {
+    padding-top: 100px;
+    font-size: large;
+    font-weight: bold;
+    background-color: white
+}
+
+.main-order {
+    background-color:  #dfdfdf;
+    height: 100vh;
+}
+
+.header-order p {
+    margin: 0;
+}
+
+.header-order img {
+    width: 15%;
+}
+
+.main-order div:first-child {
+    padding: 3px 10px;
+}
+
+.main-order div[id="description"] {
+    padding: 3px 15px;
+    margin: 10px 0;
+    background-color: white;
+    font-size: smaller;
+}
+
+.header-order div {
+    display: flex;
+    margin-top: 15px;
+    padding-bottom: 8px;
+
+}
+
+.header-order p:last-child {
+    align-self: center;
+    margin-left: 30px;
+    font-size: small;
+}
