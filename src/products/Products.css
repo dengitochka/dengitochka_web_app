@@ -23,6 +23,7 @@
 
 .product-title-price {
     display: flex;
+    justify-content: center;
     text-align: center;
     font-size: smaller;
 }
