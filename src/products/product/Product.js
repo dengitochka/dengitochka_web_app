@@ -13,15 +13,25 @@ export function Product(props) {
         if (product === null)
             fetchProduct(props.productId)
                 .then(product => setProduct(product));
-    });
+    }, [product]);
 
-    tg.MainButton.onClick(() => sendCreditHistory(tg.initDataUnsafe.user.id));
+    useEffect(() => {
+        let isCanceled = false;
+        
+        if (!isCanceled)
+            tg.MainButton.onClick(() => sendCreditHistory(tg.initDataUnsafe.user.id));
+        
+        return () => {
+            isCanceled = true;
+        }
+    }, [product])
+
     return (
         <div className="main-order">
             <div className="header-order">
                 <p>Ваш заказ</p>
                 <div>
-                    <img src="/logo192.png"/>
+                    <img src="/bookkeeping-icon.png"/>
                     <p>{product?.product_title}</p>
                 </div>
             </div>

@@ -18,7 +18,7 @@ export function Products(props) {
             {
                 products?.map(product =>
                     <div key={product.id} className="product" onClick={() => props.handle(true, product.id)}>
-                        <img src="/logo192.png" className="product-img"/>
+                        <img src="/bookkeeping-icon.png" className="product-img"/>
                             <div className="product-title-price">
                                 <p>{product.product_title}</p>
                             </div>
