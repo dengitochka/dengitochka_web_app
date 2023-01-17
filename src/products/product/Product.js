@@ -1,30 +1,26 @@
 import "./Product.css";
 import { fetchProduct } from "../../services/products";
 import sendCreditHistory from "../../services/order";
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import {tg} from "../../App"
 
 export function Product(props) {
     const [product, setProduct] = useState(null);
+    const dataFetchedRef = useRef(false);
     const description = 'Услуги по предоставлению кредитных отчётов на основании информации (кредитных историй), находящейся в принадлежащей АО «НБКИ» специализированной электронной базе данных, формируемой и пополняемой АО «НБКИ» на ежедневной основе'
-    console.log(props.productId);
-    useEffect(() => {
-        console.log("refresh");
-        if (product === null)
-            fetchProduct(props.productId)
-                .then(product => setProduct(product));
-    }, [product]);
 
     useEffect(() => {
-        let isCanceled = false;
-        
-        if (!isCanceled)
+        if (!dataFetchedRef.current) {
+            fetchProduct(props.productId)
+                .then(product => setProduct(product));
+
             tg.MainButton.onClick(() => sendCreditHistory(tg.initDataUnsafe.user.id));
-        
-        return () => {
-            isCanceled = true;
         }
-    }, [product])
+
+        return () => {
+            dataFetchedRef.current = true;
+        }
+    }, [product]);
 
     return (
         <div className="main-order">

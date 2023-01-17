@@ -1,6 +1,7 @@
 import { API_Config } from "../config";
 
 export default async function sendCreditHistory(chatId) {
+    console.log("sendCreditHistory");
     let response = await fetch([API_Config.url, API_Config.endpoints.send_document, '?', 
         new URLSearchParams({
             chatId: chatId

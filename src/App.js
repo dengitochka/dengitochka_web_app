@@ -34,7 +34,7 @@ export default function App() {
         {
         isSelectedProduct ? 
           <FadeInOut key="1" show={isSelectedProduct} duration={duration} style={{}}> 
-            <Product productId={productId}/> 
+            <Product productId={productId} done={true}/> 
           </FadeInOut> : 
           <FadeInOut key="2" show={!isSelectedProduct} duration={duration} style={{}}> 
             <Products handle={handleSelectedProduct}/>

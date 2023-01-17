@@ -13,6 +13,7 @@
 .product {
     width: 40%;
     margin-left: 10%;
+    cursor: default;
 }
 
 .product-img {
@@ -26,4 +27,8 @@
     justify-content: center;
     text-align: center;
     font-size: smaller;
+}
+
+.product-title-focus {
+    color: rgb(105, 100, 154)
 }

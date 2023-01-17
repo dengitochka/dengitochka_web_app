@@ -1,26 +1,37 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useRef, useEffect} from "react";
 import "./Products.css";
 import { fetchProducts } from "../services/products";
 
 export function Products(props) {
     const [products, setProducts] = useState(null);
-    console.log("refresh");
-    console.log(products);
+    const [productId, setProductId] = useState(false);
+    const dataFetchedRef = useRef(false);
 
     useEffect(() => {
-        if (products === null)
+        
+        console.log("useEffect");
+        if (!dataFetchedRef.current)
             fetchProducts()
                 .then(products => setProducts(products));
-    });
+
+    return () => {
+        dataFetchedRef.current = true;
+    }
+    }, [products]);
 
     return (
         <div className="list-products">
             {
                 products?.map(product =>
-                    <div key={product.id} className="product" onClick={() => props.handle(true, product.id)}>
+                    <div 
+                        key={product.id} 
+                        className="product" 
+                        onClick={() => props.handle(true, product.id)}  
+                        onMouseOver={() => setProductId(product.id)}
+                        onMouseOut={() => setProductId(null)}>
                         <img src="/bookkeeping-icon.png" className="product-img"/>
                             <div className="product-title-price">
-                                <p>{product.product_title}</p>
+                                <p className={product.id ===  productId ? "product-title-focus" : null}>{product.product_title}</p>
                             </div>
                     </div>
             )}
