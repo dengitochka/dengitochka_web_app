@@ -1,7 +1,7 @@
 import "./Product.css";
 import { fetchProduct } from "../../services/products";
 import sendCreditHistory from "../../services/order";
-import React, {useState, useEffect, useRef} from "react";
+import React, {useState, useEffect, useRef, useCallback} from "react";
 import {tg} from "../../App"
 
 export function Product(props) {
@@ -9,12 +9,15 @@ export function Product(props) {
     const dataFetchedRef = useRef(false);
     const description = 'Услуги по предоставлению кредитных отчётов на основании информации (кредитных историй), находящейся в принадлежащей АО «НБКИ» специализированной электронной базе данных, формируемой и пополняемой АО «НБКИ» на ежедневной основе'
 
+    let useSendCreditHistory = useCallback(() => 
+        sendCreditHistory(tg.initDataUnsafe.user.id), []);
+
     useEffect(() => {
         if (!dataFetchedRef.current) {
             fetchProduct(props.productId)
                 .then(product => setProduct(product));
 
-            tg.MainButton.onClick(() => sendCreditHistory(tg.initDataUnsafe.user.id));
+            tg.MainButton.onClick(() => props.useSendCreditHistory);
         }
 
         return () => {
